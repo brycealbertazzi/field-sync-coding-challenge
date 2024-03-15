@@ -12,15 +12,15 @@ export const PostgreDBUserTable: React.FC<Props> = (props) => {
     return (
         <TableContainer className='users-table'>
             <Table aria-label="simple table">
-                <TableHead>
-                <TableRow>
-                    <TableCell>PostgreID</TableCell>
-                    <TableCell>UserID</TableCell>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Company</TableCell>
-                    <TableCell>Email</TableCell>
-                    <TableCell>Phone</TableCell>
-                </TableRow>
+                <TableHead className='users-head'>
+                    <TableRow>
+                        <TableCell><h3>PostgreID</h3></TableCell>
+                        <TableCell><h3>UserID</h3></TableCell>
+                        <TableCell><h3>Name</h3></TableCell>
+                        <TableCell><h3>Company</h3></TableCell>
+                        <TableCell><h3>Email</h3></TableCell>
+                        <TableCell><h3>Phone</h3></TableCell>
+                    </TableRow>
                 </TableHead>
                 <TableBody>
                 {postgreDBUsers.map((row: PostgreDBUser) => (

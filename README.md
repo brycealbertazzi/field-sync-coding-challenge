@@ -1,4 +1,16 @@
-Run client and server side together with:
-"npm run serve"
-
+- To run the application, navigate to the root directory of the project (field-sync-coding-challenge) in your terminal and run the command:
+- "npm run serve"
 - This will run the React client side on port 3000, and will run the api and db docker containers
+
+- To run the docker containers
+- "npm run docker"
+
+- To run the node.js serverside
+- "npm run server"
+
+- To run the React clientside
+- "npm run client"
+
+
+The front end code is hosted on an aws s3 bucket at:
+http://field-sync-s3-bucket.s3-website-us-east-1.amazonaws.com/

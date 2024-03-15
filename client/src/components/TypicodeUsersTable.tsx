@@ -21,13 +21,13 @@ export const TypicodeUsersTable: React.FC<Props> = (props) => {
     return (
         <TableContainer className='users-table'>
             <Table aria-label="simple table">
-                <TableHead>
+                <TableHead className='users-head'>
                 <TableRow>
-                    <TableCell>ID</TableCell>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Company</TableCell>
-                    <TableCell>Email</TableCell>
-                    <TableCell>Phone</TableCell>
+                    <TableCell><h3>ID</h3></TableCell>
+                    <TableCell><h3>Name</h3></TableCell>
+                    <TableCell><h3>Company</h3></TableCell>
+                    <TableCell><h3>Email</h3></TableCell>
+                    <TableCell><h3>Phone</h3></TableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>

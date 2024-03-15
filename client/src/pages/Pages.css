@@ -3,11 +3,22 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    margin: 20px;
 }
 
 .users-table {
     width: 80%;
     margin-top: 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.users-head {
+    background-color: #f2f2f2;
+}
+
+.MuiTableCell-root.MuiTableCell-head {
+    border-bottom: 1px solid black;
 }
 
 .component-button {

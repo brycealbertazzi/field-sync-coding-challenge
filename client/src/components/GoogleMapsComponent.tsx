@@ -15,15 +15,15 @@ const GoogleMapComponent: React.FC<GoogleMapProps> = (props) => {
         const initializeMap = () => {
             // Initialize the map
             const mapOptions = {
-                center: { lat: lat ? lat : 40.7128, lng: lng ? lng : -74.006 },
+                center: { lat: lat ? lat : 40, lng: lng ? lng : -70 },
                 zoom: 5,
             };
 
             const map = new window.google.maps.Map(mapRef.current!, mapOptions);
 
             // Example: Add a marker
-            const marker = new window.google.maps.Marker({
-                position: { lat: lat ? lat : 40.7128, lng: lng ? lng : -74.006 },
+            new window.google.maps.Marker({
+                position: { lat: lat ? lat : 40, lng: lng ? lng : -70 },
                 map,
             });
         };
@@ -49,7 +49,7 @@ const GoogleMapComponent: React.FC<GoogleMapProps> = (props) => {
         };
     }, [props.lat, props.lng]); // Dependency array including lat and lng props
 
-    return <div ref={mapRef} style={{ width: '75%', height: '800px' }} hidden={!selectedUser}/>;
+    return <div ref={mapRef} style={{ marginTop: '20px', width: '75%', height: '800px' }} hidden={!selectedUser}/>;
 }
 
 export default GoogleMapComponent;
