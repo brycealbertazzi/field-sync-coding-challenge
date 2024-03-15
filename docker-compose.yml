@@ -22,5 +22,3 @@ services:
       test: ["CMD-SHELL", "pg_isready -U postgres"]  # Check if the database server is ready
       interval: 10s  # Health check interval
       retries: 5     # Number of retries before considering the service unhealthy
-    volumes:
-      - ./db/InitDB.sql:/docker-entrypoint-initdb.d/01_InitDB.sql  # Mount the SQL initialization file into the container
