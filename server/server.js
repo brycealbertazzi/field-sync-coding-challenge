@@ -34,6 +34,41 @@ app.get('/api/fetch-typicode-users', (req, res) => {
         })
 })
 
+app.get('/api/init-users-db', async (req, res) => {
+    try {
+        // CREATE EXTENSION
+        pool.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";', (err, res) => {
+            if (err) {
+            console.error('Error creating extension for table', err.stack);
+            } else {
+            console.log('Extension "uuid-ossp" created successfully');
+            }
+        });
+        
+        // CREATE TABLE
+        pool.query(`
+            CREATE TABLE IF NOT EXISTS users (
+            id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+            user_id INTEGER NOT NULL,
+            name VARCHAR NOT NULL,
+            company VARCHAR NOT NULL,
+            email VARCHAR NOT NULL,
+            phone VARCHAR NOT NULL
+            );
+        `, (err, res) => {
+            if (err) {
+            console.error('Error creating users table:', err.stack);
+            } else {
+            console.log('Table "users" created successfully');
+            }
+        });
+        res.send('Users table created successfully')
+    } catch (error) {
+        console.log(error)
+        res.send(error)
+    }
+})
+
 // Fetch users from Postgres DB
 app.get('/api/fetch-users', async (req, res) => {
     try {

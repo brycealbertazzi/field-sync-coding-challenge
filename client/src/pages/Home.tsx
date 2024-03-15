@@ -25,7 +25,6 @@ export const Home = () => {
                     address: user.address,
                 }
             })
-            console.log(users)
             setTypicodeUsers(users)
         }).catch(err => {
             console.log(err)

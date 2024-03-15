@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import AppContext from '../context/AppContext';
 import { Table, TableHead, TableRow, TableCell, TableBody, TableContainer } from '@mui/material'
 import { User } from '../types';
@@ -13,10 +13,6 @@ export const TypicodeUsersTable: React.FC<Props> = (props) => {
     const appContext = useContext(AppContext)
     const { setGoogleMapsSelectedUser } = appContext
     const [selectedUser, setSelectedUser] = useState<User | null>(null)
-
-    useEffect(() => {
-        console.log(selectedUser)
-    }, [selectedUser])
 
     return (
         <TableContainer className='users-table'>
