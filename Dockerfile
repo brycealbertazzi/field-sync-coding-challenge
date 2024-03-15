@@ -13,8 +13,8 @@ RUN npm install
 # Copy the rest of the backend files from the 'server' directory to the working directory
 COPY server/ ./server/
 
-# Expose the port your app runs on
+# Expose the port the app runs on
 EXPOSE 5000
 
-# Command to run your app
+# Command to run the serverside of the app
 CMD ["npm", "run", "server"]
