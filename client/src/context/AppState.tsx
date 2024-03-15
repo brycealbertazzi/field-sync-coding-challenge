@@ -5,11 +5,14 @@ import { User } from '../types'
 
 interface State {
   typicodeUsers: User[]
+  googleMapsSelectedUser: User | null
 }
 
 interface ContextValue {
   typicodeUsers: User[]
   setTypicodeUsers: (payload: any) => void
+  googleMapsSelectedUser: User | null
+  setGoogleMapsSelectedUser: (payload: any) => void
 }
 
 interface Props {
@@ -19,6 +22,7 @@ interface Props {
 const AppStateProvider: React.FC<Props> = ({ children }) => {
   const initialState: State = {
     typicodeUsers: [],
+    googleMapsSelectedUser: null,
   }
 
   const [state, dispatch] = useReducer(AppReducer, initialState)
@@ -27,9 +31,15 @@ const AppStateProvider: React.FC<Props> = ({ children }) => {
     dispatch({ type: 'SET_TYPICODE_USERS', payload })
   }
 
+  const setGoogleMapsSelectedUser = (payload: any) => {
+    dispatch({ type: 'SET_GOOGLE_MAPS_SELECTED_USER', payload })
+  }
+
   const contextValue: ContextValue = {
     typicodeUsers: state.typicodeUsers,
     setTypicodeUsers,
+    googleMapsSelectedUser: state.googleMapsSelectedUser,
+    setGoogleMapsSelectedUser: setGoogleMapsSelectedUser,
   }
 
   return (

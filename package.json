@@ -1,7 +1,8 @@
 {
   "type": "module",
   "scripts": {
-    "serve": "concurrently \"npm run server\" \"npm run client\"",
+    "serve": "concurrently \"npm run docker\" \"npm run client\"",
+    "docker": "docker-compose up",
     "server": "node server/server.js",
     "client": "cd client && npm start"
   },

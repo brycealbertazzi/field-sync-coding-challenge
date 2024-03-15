@@ -11,6 +11,11 @@ const reducer = (state: any, action: Action) => {
                 typicodeUsers: action.payload
             }
         default:
+        case 'SET_GOOGLE_MAPS_SELECTED_USER':
+            return {
+                ...state,
+                googleMapsSelectedUser: action.payload
+            }
         return state
     }
 }

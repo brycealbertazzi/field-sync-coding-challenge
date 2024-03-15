@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import AppContext from '../context/AppContext';
 import { Table, TableHead, TableRow, TableCell, TableBody, TableContainer } from '@mui/material'
 import { User } from '../types';
 
 interface Props {
     typicodeUsers: User[];
+    page: string;
 }
 
 export const TypicodeUsersTable: React.FC<Props> = (props) => {
-    const { typicodeUsers } = props
+    const { typicodeUsers, page } = props
+    const appContext = useContext(AppContext)
+    const { setGoogleMapsSelectedUser } = appContext
+    const [selectedUser, setSelectedUser] = useState<User | null>(null)
+
+    useEffect(() => {
+        console.log(selectedUser)
+    }, [selectedUser])
 
     return (
         <TableContainer className='users-table'>
@@ -22,13 +31,20 @@ export const TypicodeUsersTable: React.FC<Props> = (props) => {
                 </TableRow>
                 </TableHead>
                 <TableBody>
-                {typicodeUsers.map((row: User) => (
-                    <TableRow key={row.id}>
-                        <TableCell>{row.id}</TableCell>
-                        <TableCell>{row.name}</TableCell>
-                        <TableCell>{row.company}</TableCell>
-                        <TableCell>{row.email}</TableCell>
-                        <TableCell>{row.phone}</TableCell>
+                {typicodeUsers.map((user: User) => (
+                    <TableRow key={user.id}>
+                        <TableCell>{user.id}</TableCell>
+                        {page === 'home'
+                            ?
+                                <TableCell>
+                                    <a href="#" onClick={() => setGoogleMapsSelectedUser(user)}>{user.name}</a>
+                                </TableCell>
+                            :
+                                <TableCell>{user.name}</TableCell>
+                        }
+                        <TableCell>{user.company}</TableCell>
+                        <TableCell>{user.email}</TableCell>
+                        <TableCell>{user.phone}</TableCell>
                     </TableRow>
                 ))}
                 </TableBody>

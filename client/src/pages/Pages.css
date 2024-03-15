@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .users-table {
@@ -19,4 +19,37 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+/* Loading Spinner */
+.spinner-container {
+    text-align: center;
+}
+  
+.spinner {
+    width: 60px;
+    height: 60x;
+    position: relative;
+    margin: 20px auto;
+}
+  
+.spinner:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin-top: -25px;
+    margin-left: -25px;
+    border-radius: 50%;
+    border: 5px solid black;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
