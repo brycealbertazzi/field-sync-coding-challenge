@@ -14,11 +14,13 @@ const port = 5000
 
 const pool = new Pool({
     user: 'postgres',
-    host: 'localhost',
-    database: 'FieldSyncCodingChallengeDB',
+    host: 'host.docker.internal',
+    database: 'FieldSyncDB',
     password: 'Gobeavs0820#',
     port: 5432
 })
+
+console.log('Pool:', pool)
 
 // Fetch typicode users
 app.get('/api/fetch-typicode-users', (req, res) => {

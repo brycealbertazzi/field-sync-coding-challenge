@@ -1,0 +1,26 @@
+version: '3'
+services:
+  server:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_HOST=host.docker.internal  # Use host.docker.internal as the hostname
+      - DATABASE_PORT=5432
+    depends_on:
+      db:
+        condition: service_healthy  # Wait for the db service to be healthy
+  db:
+    image: "postgres:latest"
+    environment:
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_DB=FieldSyncDB"
+      - "POSTGRES_PASSWORD=Gobeavs0820#"
+    ports:
+      - "5432:5432"  # Expose the PostgreSQL port to the host machine
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]  # Check if the database server is ready
+      interval: 10s  # Health check interval
+      retries: 5     # Number of retries before considering the service unhealthy
+    volumes:
+      - ./db/InitDB.sql:/docker-entrypoint-initdb.d/01_InitDB.sql  # Mount the SQL initialization file into the container
