@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { User } from '../types';
 import AppContext from '../context/AppContext';
 import './Pages.css'
 import axios from 'axios';
 import { TypicodeUsersTable } from '../components/TypicodeUsersTable';
-import GoogleMaps from '../components/GoogleMaps';
+import GoogleMapComponent from '../components/GoogleMapsComponent';
 
 export const Home = () => {
     const appContext = useContext(AppContext)
@@ -45,7 +45,8 @@ export const Home = () => {
             <h3>Users from Typicode API</h3>
             <button className='component-button' onClick={() => downloadTypicodeUsers()}>Download</button>
             <TypicodeUsersTable typicodeUsers={typicodeUsers} page='home'/>
-            {googleMapsSelectedUser && <GoogleMaps lat={Number(googleMapsSelectedUser?.address.geo.lat)} lng={Number(googleMapsSelectedUser?.address.geo.lng)} />}
+            {/* {googleMapsSelectedUser && <GoogleMaps lat={Number(googleMapsSelectedUser?.address.geo.lat)} lng={Number(googleMapsSelectedUser?.address.geo.lng)} />} */}
+            <GoogleMapComponent lat={Number(googleMapsSelectedUser?.address.geo.lat)} lng={Number(googleMapsSelectedUser?.address.geo.lng)} selectedUser={googleMapsSelectedUser}/>
         </div>
     )
 }
